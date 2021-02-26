@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html><head><link rel="shortcut icon" type="image/png" href="iconfinder_orkut-512_148637.png">
+    <meta charset="utf-8">
+    <script type="text/javascript" src="jquery.min.js"></script>
+            
+    <title>form</title>
+    <style type="text/css">  
+body{
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  background: #FBEB9F;
+}
+.box{
+  width: 300px;
+  padding: 80px;
+    height:400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: #688C69;
+  text-align: center;
+}
+.box h1{
+  color: white;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.box input[type = "text"],.box input[type = "password"]{
+  border:0;
+  background: black;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #3498db;
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+}
+.box input[type = "text"]:focus,.box input[type = "password"]:focus{
+  width: 280px;
+  border-color: #2ecc71;
+}
+.box input[type = "button"]{
+  border:0;
+  background: none;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #2ecc71;
+  padding: 14px 40px;
+  outline: none;
+  color: white;
+  border-radius: 24px;
+  transition: 0.25s;
+  cursor: pointer;
+}
+.box input[type = "button"]:hover{
+  background: #2ecc71;
+}
+        #top{
+            
+            color: red;
+            position: relative;
+            float: left;
+            margin-left: 250px;
+            top:220px;
+        }
+        </style>
+    </head>
+    <body>
+        <div id="top"></div>
+       
+<form class="box"  method="post">
+  <h1>Login</h1>
+  <input type="text" id="email" name="" placeholder="Email">
+     <input type="text" name="mobile" id="mobile" placeholder="Mobile No.">
+  <input type="password" name="" placeholder="Password" id="password">
+    <input type="password" name="" placeholder="confirm password" id="confirm">
+   
+  <input id="submitt" type="button" name="data" onclick="getData()" value="Login">
+</form>
+<script type="text/javascript">
+    function isEmail(email){
+          var reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+        return reg.test(email);
+    }
+   
+        $("#submitt").click(function(){
+            var errormessage=""; 
+           var fieldMissing ="";
+           if($("#email").val()== ""){
+               fieldMissing+="<br>email";
+           }
+           if($("#mobile").val()== ""){
+               fieldMissing+="<br>mobile";
+           } 
+            if($("#password").val()== ""){
+               fieldMissing+="<br>password";
+           } 
+            if($("#confirm").val()== ""){
+               fieldMissing+="<br>confirm password";
+                }
+            
+           if(fieldMissing != ""){
+               errormessage+="<p>The following filed(s) are missing</p>" +fieldMissing;
+           } if(isEmail($("#email").val())==false){
+                errormessage+="<p>The email is invalid</p>";
+                
+            }
+            if($.isNumeric($("#mobile").val()==false)){
+            errormessage+="<p>The number is invalid</p>";
+           }
+             if($("#password").val()!= $("#confirm").val()){
+                errormessage+="<p>The password dont match</p>";
+            }
+        if(errormessage!= ""){
+            $("#top").html(errormessage);}
+            else{
+                alert("lets go!")
+            }
+        });
+        </script>
+    </body>
+</html>
